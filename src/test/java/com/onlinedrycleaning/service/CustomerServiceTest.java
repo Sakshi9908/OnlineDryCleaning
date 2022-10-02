@@ -60,5 +60,17 @@ public class CustomerServiceTest {
 
 	}
 	
+	@Test
+	public void testDeleteCustomer() throws CustomerNotFoundException {
+		int customerId = 101;
+		service.deleteCustomer(customerId);
+		Mockito.verify(repository, Mockito.atLeastOnce()).deleteById(Mockito.anyInt());
+	}
+
+	@Test
+	public void testUpdateCustomer() throws CustomerNotFoundException {
+		Mockito.doReturn(customer).when(repository).save(Mockito.any());
+		assertEquals(customer.getCustomerId(), service.updateCustomer(customer).getCustomerId());
+	}
 	
 }

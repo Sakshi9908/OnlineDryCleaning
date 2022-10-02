@@ -59,4 +59,12 @@ public class PaymentServiceTest {
 		assertEquals(Stream.of(payment, payment).collect(Collectors.toList()), service.getAllPaymentDetails());
 		assertEquals(2, service.getAllPaymentDetails().size());
 	}
+	
+//	@Test
+//	public void testDeletePayment() throws IdNotFoundException{
+//		long paymentId = 101;
+//		service.deletePayment(paymentId);
+//		Mockito.verify(repository, Mockito.atLeastOnce()).deleteById(Mockito.anyLong());
+//	}
+
 }
