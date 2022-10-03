@@ -103,7 +103,7 @@ public class CustomerService implements ICustomerService {
         if(null!=sortProperty){
             pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC,sortProperty);
         }else {
-            pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC,"name");
+            pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC,"customerName");
         }
         return customerRepo.findAll(pageable);
     }

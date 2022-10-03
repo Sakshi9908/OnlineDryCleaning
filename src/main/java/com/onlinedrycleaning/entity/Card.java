@@ -24,7 +24,8 @@ public class Card {
 	@Column(name = "cardName")
 	private String cardName;
 
-	@Column(name = "cardNumber", unique = true)
+	@Pattern(regexp = "^[0-9]{12}$", message = "Number should contain only 12 digits ")
+	@Column(name = "cardNumber")
 	private String cardNumber;
 
 	@Column(name = "expiryDate")

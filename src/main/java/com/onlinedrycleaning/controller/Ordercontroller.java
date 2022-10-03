@@ -65,7 +65,7 @@ public class Ordercontroller {
 
 	@GetMapping("/viewOrder/id/{bookingId}")
 	public ResponseEntity<Order> viewOrder(@PathVariable int bookingId) {
-		return new ResponseEntity<Order>(orderService.viewOrder(bookingId), HttpStatus.OK);
+		return new ResponseEntity<Order>(orderService.getOrderById(bookingId), HttpStatus.OK);
 	}
 
 //*********************************************************************************************************************	
@@ -82,7 +82,7 @@ public class Ordercontroller {
 
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<List<Order>> viewAllorders() {
-		return new ResponseEntity<List<Order>>(orderService.viewAllOrders(), HttpStatus.OK);
+		return new ResponseEntity<List<Order>>(orderService.getAllOrders(), HttpStatus.OK);
 	}
 
 //*********************************************************************************************************************	
@@ -98,9 +98,9 @@ public class Ordercontroller {
 	 */
 
 	@PutMapping({ "/updateOrder/id/{bookingId}" })
-	public ResponseEntity<Order> updateOrder(@RequestBody Order order, @PathVariable int bookingId) {
+	public ResponseEntity<Order> updateOrder(@RequestBody Order order) {
 		// logger.trace("updating the whole plant having id "+ id);
-		orderService.updateOrder(order, bookingId);
+		orderService.updateOrder(order);
 		return new ResponseEntity<Order>(order, HttpStatus.ACCEPTED);
 	}
 

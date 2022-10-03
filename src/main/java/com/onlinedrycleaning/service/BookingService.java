@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 import com.onlinedrycleaning.entity.Booking;
 import com.onlinedrycleaning.exception.BookingDateNotFound;
 import com.onlinedrycleaning.exception.BookingNotFoundException;
-import com.onlinedrycleaning.repository.BookingRepository;
+import com.onlinedrycleaning.repository.IBookingRepository;
 
 @Service
 public class BookingService implements IBookingService{
 	
 	@Autowired
-	private BookingRepository bookingRepo;
+	private IBookingRepository bookingRepo;
 	
     //Get Mapping
 	@Override

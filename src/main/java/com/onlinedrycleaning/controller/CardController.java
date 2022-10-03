@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onlinedrycleaning.entity.Card;
-
-
 import com.onlinedrycleaning.service.ICardService;
 import com.onlinedrycleaning.exception.IdNotFoundException;
 
@@ -39,6 +38,11 @@ public class CardController {
 	public ResponseEntity<String> deleteCard(@PathVariable long cardId) {
 		String status = cardService.deleteCard(cardId);
 		return new ResponseEntity<String>(status, HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateCard")
+	public ResponseEntity<Card> updateCard(@Valid @RequestBody Card card) {
+		return new ResponseEntity<Card>(cardService.updateCard(card), HttpStatus.OK);
 	}
 
 	@GetMapping("/viewcard/{cardId}")

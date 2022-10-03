@@ -1,7 +1,6 @@
 package com.onlinedrycleaning.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -45,13 +42,13 @@ public class Order {
 	@JoinColumn(name = "paymentId", referencedColumnName = "paymentId")
 	private Payment payment;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
-	private Customer customer;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
+//	private Customer customer;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "orderId", referencedColumnName = "orderId")
-	private List<Booking> booking = new ArrayList<>();
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "orderId", referencedColumnName = "orderId")
+//	private List<Booking> booking = new ArrayList<>();
 
 	public Order() {
 		super();
@@ -59,15 +56,15 @@ public class Order {
 	}
 
 	public Order(long orderId, double amount, LocalDate billingDate, String paymentMethod, Payment payment,
-			Customer customer, List<Booking> booking) {
+			 List<Booking> booking) {
 		super();
 		this.orderId = orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
 		this.paymentMethod = paymentMethod;
 		this.payment = payment;
-		this.customer = customer;
-		this.booking = booking;
+//		this.customer = customer;
+		//this.booking = booking;
 	}
 
 	public long getOrderId() {
@@ -110,19 +107,19 @@ public class Order {
 		this.payment = payment;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 	
-	public List<Booking> getBooking() {
-		return booking;
-	}
-
-	public void setBooking(List<Booking> booking) {
-		this.booking = booking;
-	}
+//	public List<Booking> getBooking() {
+//		return booking;
+//	}
+//
+//	public void setBooking(List<Booking> booking) {
+//		this.booking = booking;
+//	}
 }

@@ -26,13 +26,9 @@ class OrderService implements IOrderService {
 	}
 
 	@Override
-	public Order updateOrder(Order order, long orderId) {
-		Optional<Order> orderToBeUpdated = orderRepo.findById(order.getOrderId());
-		if (orderToBeUpdated.isPresent()) {
-			orderRepo.save(order);
-		}
-		return orderToBeUpdated.orElseThrow(
-				() -> new OrderIdNotFoundException("Order with id: " + order.getOrderId() + " is not found"));
+	public Order updateOrder(Order order) {
+		orderRepo.save(order);
+		return order;
 	}
 
 	@Override
@@ -51,14 +47,14 @@ class OrderService implements IOrderService {
 	}
 
 	@Override
-	public Order viewOrder(int bookingId) throws OrderIdNotFoundException {
-		Optional<Order> orderOptional = orderRepo.findById(bookingId);
+	public Order getOrderById(long orderId) throws OrderIdNotFoundException {
+		Optional<Order> orderOptional = orderRepo.findById(orderId);
 		return orderOptional
-				.orElseThrow(() -> new OrderIdNotFoundException("Order with id: " + bookingId + " is not found"));
+				.orElseThrow(() -> new OrderIdNotFoundException("Order with id: " + orderId + " is not found"));
 	}
 
 	@Override
-	public List<Order> viewAllOrders() {
+	public List<Order> getAllOrders() {
 		return orderRepo.findAll();
 	}
 

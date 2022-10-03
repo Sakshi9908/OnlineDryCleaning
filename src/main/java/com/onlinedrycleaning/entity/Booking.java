@@ -1,19 +1,13 @@
 package com.onlinedrycleaning.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -35,29 +29,27 @@ public class Booking {
 	@NotBlank(message = "Service Type should not be empty.")
 	private String serviceType;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
-	private Customer customer;
+	@Column(name = "bookingTime")
+	@JsonFormat(pattern = "HH:mm:ss")
+	LocalTime bookingTime = LocalTime.now();
 
-	@ManyToMany
-	@JoinTable(name = "customerItem_booking_map", 
-		joinColumns = @JoinColumn(
-				name = "bookingId", referencedColumnName = "bookingId"), 
-				inverseJoinColumns = @JoinColumn(
-					name = "itemId", referencedColumnName = "itemId")
-	)
-	private List<CustomerItem> customerItem = new ArrayList<>();
-	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
+//	private Customer customer;
 
+//	@ManyToMany(cascade = { CascadeType.ALL })
+//	@JoinTable(name = "customerItem_booking_map", joinColumns = @JoinColumn(name = "bookingId", referencedColumnName = "bookingId"), inverseJoinColumns = @JoinColumn(name = "itemId", referencedColumnName = "itemId"))
+//	private List<CustomerItem> customerItem = new ArrayList<>();
 
-	public Booking(long bookingId, LocalDate bookingDate, String serviceType, Customer customer, List<CustomerItem> customerItem) {
+	public Booking(long bookingId, LocalDate bookingDate, String serviceType, LocalTime bookingTime,Customer customer,
+			List<CustomerItem> customerItem) {
 		super();
 		this.bookingId = bookingId;
 		this.bookingDate = bookingDate;
 		this.serviceType = serviceType;
-		this.customer = customer;
-		// this.customerDetails = customerDetails;
-		this.customerItem = customerItem;
+		this.bookingTime = bookingTime;
+//		this.customer = customer;
+		//this.customerItem = customerItem;
 	}
 
 	public Booking() {
@@ -89,22 +81,30 @@ public class Booking {
 		this.serviceType = serviceType;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public LocalTime getBookingTime() {
+		return bookingTime;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setBookingTime(LocalTime bookingTime) {
+		this.bookingTime = bookingTime;
 	}
 
-	public List<CustomerItem> getCustomerItem() {
-		return customerItem;
-	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 
-	public void setCustomerItem(List<CustomerItem> customerItem) {
-		this.customerItem = customerItem;
-	}
-	
+//	public List<CustomerItem> getCustomerItem() {
+//		return customerItem;
+//	}
+//
+//	public void setCustomerItem(List<CustomerItem> customerItem) {
+//		this.customerItem = customerItem;
+//	}
+
 }
 
 //private String dateFormat = bookingDate.toString();

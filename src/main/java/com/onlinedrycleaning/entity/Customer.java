@@ -59,36 +59,34 @@ public class Customer {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
 	private List<CustomerItem> customeritem = new ArrayList<>();
-	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
-//	private List<Booking> booking = new ArrayList<>();
-	
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
+	private List<Booking> booking = new ArrayList<>();
+
 //	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "cusomerId", referencedColumnName = "cusomerId")
 //	private List<Order> order = new ArrayList<>();
-
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(int customerId, String customerName, String email, String contactNo, LocalDate dob, String password,
-			String role, List<Address> address, List<CustomerItem> customeritem) {
-		super();
-		this.customerId = customerId;
-		this.customerName = customerName;
-		this.email = email;
-		this.contactNo = contactNo;
-		this.dob = dob;
-		this.password = password;
-		this.role = role;
-		this.address = address;
-		this.customeritem = customeritem;
-//		this.booking = booking;
-//		this.order = order;
-	}
+	public Customer(int customerId, String customerName, String email, String contactNo,LocalDate dob, String password,
+		String role, List<Address> address,List<CustomerItem> customeritem, List<Booking> booking) {
+	super();
+	this.customerId = customerId;
+	this.customerName = customerName;
+	this.email = email;
+	this.contactNo = contactNo;
+	this.dob = dob;
+	this.password = password;
+	this.role = role;
+	this.address = address;
+	this.customeritem = customeritem;
+	this.booking = booking;
+}
 
 	public int getCustomerId() {
 		return customerId;
@@ -162,13 +160,13 @@ public class Customer {
 		this.customeritem = customeritem;
 	}
 
-//	public List<Booking> getBooking() {
-//		return booking;
-//	}
-//
-//	public void setBooking(List<Booking> booking) {
-//		this.booking = booking;
-//	}
+	public List<Booking> getBooking() {
+		return booking;
+	}
+
+	public void setBooking(List<Booking> booking) {
+		this.booking = booking;
+	}
 
 //	public List<Order> getOrder() {
 //		return order;

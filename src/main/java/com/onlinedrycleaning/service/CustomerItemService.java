@@ -10,13 +10,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.onlinedrycleaning.entity.CustomerItem;
 import com.onlinedrycleaning.exception.ItemNotFoundException;
-import com.onlinedrycleaning.repository.CustomerItemRepository;
+import com.onlinedrycleaning.repository.ICustomerItemRepository;
 
 @Service
 public class CustomerItemService implements ICustomerItemService {
 	
 	@Autowired
-	private CustomerItemRepository customerItemRepo;
+	private ICustomerItemRepository customerItemRepo;
 
 	//Post Mapping
 	@Override

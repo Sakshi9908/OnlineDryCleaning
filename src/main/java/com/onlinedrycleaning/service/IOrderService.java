@@ -10,11 +10,11 @@ import com.onlinedrycleaning.exception.OrderIdNotFoundException;
 public interface IOrderService {
 	public Order addOrder(Order order);
 	
-	public Order viewOrder(int bookingId);
+	public Order getOrderById(long orderId);
 	
-	public List<Order> viewAllOrders();
+	public List<Order> getAllOrders();
 	
-	public Order updateOrder(Order order, long orderId);
+	public Order updateOrder(Order order);
 
 	public List<Order> deleteOrderById(long orderId) throws OrderIdNotFoundException;
 

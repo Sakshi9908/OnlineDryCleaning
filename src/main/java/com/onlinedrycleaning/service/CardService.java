@@ -53,5 +53,10 @@ public class CardService implements ICardService {
 	public List<Card> getAllCardDetails() {
 		return cardRepo.findAll();
 	}
+	
+	@Override
+	public Card updateCard(Card card) {
+		return cardRepo.save(card);
+	}
 
 }
